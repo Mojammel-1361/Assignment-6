@@ -3,7 +3,6 @@ const loadAllCategory = async()=>{
     const data = await response.json();
     return data;
 }
-
 const loadAllMaun = async() =>{
    const data = await loadAllCategory();
    const listMaun = data.data.news_category;
@@ -12,12 +11,16 @@ const loadAllMaun = async() =>{
    for(const list of listMaun){
     
     const li = document.createElement("li");
-    li.innerHTML = `<a>${list.category_name}</a>
+    li.innerHTML = `<button onclick="catagories('${list.category_id}')">${list.category_name}</button>
     `;
     menu.appendChild(li);
-   }
-   
     
+   }
 }
-
 loadAllMaun();
+
+// maun part end 
+
+const catagories = (aID) =>{
+    console.log('aID');
+}
