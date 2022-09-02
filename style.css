@@ -1,0 +1,10 @@
+.nav-line {
+    height: 5px;
+    background: linear-gradient(
+    to bottom,
+    transparent 2px,
+    rgb(91, 104, 116) 2px,
+    rgb(49, 49, 49) 3px,
+    transparent 3px
+    )
+}
