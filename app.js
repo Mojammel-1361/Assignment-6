@@ -26,12 +26,12 @@ const catagories = async(categoryId) =>{
 const category = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`);
     const data = await category.json();
     const newsItems = data.data;
-    console.log(newsItems);
+    // console.log(newsItems);
     const newsList = document.getElementById('all-data');
     newsList.innerHTML = '';
     
     newsItems.forEach(singleNews => {
-        const {title, img,total_view, author, details, thumbnail_url} = singleNews
+        const {title,total_view, author, details, thumbnail_url, _id} = singleNews
         const newsCard = document.createElement('div');
         newsCard.classList.add('col')
         newsCard.innerHTML=`
@@ -51,8 +51,7 @@ const category = await fetch(`https://openapi.programming-hero.com/api/news/cate
                 </svg></div>
 
                 <div class="basis-1/2 p-4">${total_view} M</div>
-                <div class=" p-4"><button class="btn btn-primary">details</button></div>
-                </div>
+                <label onclick="newsDetail('${_id}')" for="my-modal-5" class="btn modal-button">more...</label>
                 
                 </div>
                 
@@ -64,3 +63,24 @@ const category = await fetch(`https://openapi.programming-hero.com/api/news/cate
     });
     
 }
+
+const newsDetail = (newsId) =>{
+    fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
+    .then(res => res.json())
+    .then (data => modalData(data))
+}
+const modalData = (details)=>{
+    const modalBody = document.getElementById('modal-body');;
+    modalBody.innerHTML =`
+    <div>
+            <h1 class="font-bold text-lg text-purple-700 text-3xl">Title: ${details.data[0].title}</h1>     
+            <h3 class="font-bold text-lg">Writer Name: ${details.data[0].author.name}</h3>
+            <h3 class="font-bold text-lg">published_date: ${details.data[0].author.published_date}</h3>
+            <div><p><img src="${details.data[0].thumbnail_url}" class=""</p></div>
+            <h1 class="font-bold text-lg">News: ${details.data[0].details}</h1>
+            <h1 class="font-bold text-lg">Total view: ${details.data[0].total_view}</h1>
+            <label for="my-modal-5" class="btn">cancel</label>
+    </div>
+    `;
+}
+
