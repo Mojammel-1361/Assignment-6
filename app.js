@@ -34,7 +34,7 @@ const category = await fetch(`https://openapi.programming-hero.com/api/news/cate
     newsList.innerHTML = '';
     
     newsItems.forEach(singleNews => {
-        document.getElementById("spner").style.display = "none"
+        document.getElementById("spner").style.display = "none" 
         const {title,total_view, author, details, thumbnail_url, _id} = singleNews
         const newsCard = document.createElement('div');
         newsCard.classList.add('col')
