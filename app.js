@@ -29,7 +29,16 @@ const catagories = async(categoryId) =>{
 const category = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`);
     const data = await category.json();
     const newsItems = data.data;
-    // console.log(newsItems);
+    // const listNews = newsItems.length;
+    // console.log(listNews);
+    const countString = document.getElementById('count-number').innerText = newsItems.length;
+    // const countNumber = parseInt(countString);
+    // countNumber.innerText = listNews;
+    // console.log(countNumber);
+   
+
+
+
     const newsList = document.getElementById('all-data');
     newsList.innerHTML = '';
     

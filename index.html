@@ -8,14 +8,14 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Code News</title>
+    <title>CodeNews</title>
 </head>
 <body>
     <header>
         <section class=" mt-3 mx-10 px-8">
             <div class=" navbar bg-base-100">
                 <div class="flex-1">
-                  <a class="btn btn-ghost normal-case text-xl">coderNEWS</a>
+            <p class="btn btn-ghost normal-case text-xl">coder<span class="bg-yellow-500 p-1 rounded-lg">NEWS</span></p>
                 </div>
                 <div class="flex-none">
                   <ul class="menu menu-horizontal p-0">
@@ -33,11 +33,15 @@
         </section>
     </header>
     <main>
+        
         <section class="flex justify-center">
             <ul id="all-menu" class="menu menu-horizontal bg-base-100 rounded-box p-2">
                 <!-- li part innerHTML -->
               </ul>
         </section>
+        <div class="mx-20 p-6">
+            <h2><span id="count-number">0</span> items found</h2>
+        </div>
         <section >
             <div id="all-data" class="grid grid-cols-1 gap-4 mx-20 p-4 card card-side bg-base-100 shadow-xl">
                 
