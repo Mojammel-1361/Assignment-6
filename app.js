@@ -15,7 +15,6 @@ const loadAllMaun = async() =>{
     const li = document.createElement("li");
     li.innerHTML = `<button onclick="catagories('${list.category_id}')">${list.category_name}</button>
     `;
-    
     menu.appendChild(li);
     
    }
@@ -29,33 +28,21 @@ const catagories = async(categoryId) =>{
 const category = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`);
     const data = await category.json();
     const newsItems = data.data;
-    // const listNews = newsItems.length;
-    // console.log(listNews);
-    const countString = document.getElementById('count-number').innerText = newsItems.length;
-    // const countNumber = parseInt(countString);
-    // countNumber.innerText = listNews;
-    // console.log(countNumber);
-   
-
-
+    countString = document.getElementById('count-number').innerText = newsItems.length;
 
     const newsList = document.getElementById('all-data');
     newsList.innerHTML = '';
-    
     newsItems.forEach(singleNews => {
         document.getElementById("spner").style.display = "none" 
         const {title,total_view, author, details, thumbnail_url, _id} = singleNews
         const newsCard = document.createElement('div');
         newsCard.classList.add('col')
         newsCard.innerHTML=`
-            
       <div class="card lg:card-side bg-base-100 shadow-xl">
       <figure><img src="${thumbnail_url}" class="h-84 w-64 p-4" alt="Movie"></figure>
         <div class="card-body">
             <h2 class="card-title">${title.length > 80 ? title.slice(0,50)+ '...' : title}</h2>
             <p>${details.length > 900 ? details.slice(0,500)+ '...' : details}</p>
-            
-                
                 <div class="flex flex-row items-center">
                 <div><p><img src="${author.img}" class="h-24 w-24 p-4 rounded-full"</p></div>
                 <div class="basis-1/4 "><p>${author.name ? author.name : 'N/A'}</p></div>
