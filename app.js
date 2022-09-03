@@ -1,4 +1,6 @@
+document.getElementById("spner").style.display = "none"
 const loadAllCategory = async()=>{
+    
     const response = await fetch("https://openapi.programming-hero.com/api/news/categories");
     const data = await response.json();
     return data;
@@ -13,6 +15,7 @@ const loadAllMaun = async() =>{
     const li = document.createElement("li");
     li.innerHTML = `<button onclick="catagories('${list.category_id}')">${list.category_name}</button>
     `;
+    
     menu.appendChild(li);
     
    }
@@ -22,7 +25,7 @@ loadAllMaun();
 // maun part end 
 
 const catagories = async(categoryId) =>{
-    
+    document.getElementById("spner").style.display = "block"
 const category = await fetch(`https://openapi.programming-hero.com/api/news/category/${categoryId}`);
     const data = await category.json();
     const newsItems = data.data;
@@ -31,6 +34,7 @@ const category = await fetch(`https://openapi.programming-hero.com/api/news/cate
     newsList.innerHTML = '';
     
     newsItems.forEach(singleNews => {
+        document.getElementById("spner").style.display = "none"
         const {title,total_view, author, details, thumbnail_url, _id} = singleNews
         const newsCard = document.createElement('div');
         newsCard.classList.add('col')
